@@ -12,10 +12,10 @@
     <?php
     //5. Tenemos una variable $numero que tiene un número de 0 a 99. Mostrarlo escrito. Por ejemplo, para 56 mostrar: cincuenta y seis.
 
-    $numero = 87;
-    $decena = $numero / 10;
+    $numero = 15;
+    $decena = floor($numero / 10);
     $unidad = ($numero % 10) / 1;
-
+    echo $decena . " " . $unidad;
     if ($unidad == 1)
         $uni = "uno";
     else if ($unidad == 2)
