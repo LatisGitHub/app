@@ -20,7 +20,8 @@
 	$cadena2 = "mi nombre es Latifa El Kadiri Er Rossafi";
 	$cadena3 = $cadena1 . $cadena2;
 	echo "$cadena3";
-	
+	echo "<br>";
+	echo $cadena1 . $cadena2;
 
 
     ?>
