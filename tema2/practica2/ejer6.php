@@ -53,7 +53,15 @@
 
     echo "<table class='table'>";
     echo "<tbody>";
+    $contador = 0;
+        echo "<tr>";
+        echo "<th>Nombre</th>";
+        echo "<th>Cantidad</th>";
+        echo "<th>IVA</th>";
+        echo "<th>TOTAL</th>";  
+        echo "</tr>";
 
+       
     foreach ($carrito as $linea) {
         echo "<tr>";
         echo "<td>" . $linea['nombre'] . "</td>";
