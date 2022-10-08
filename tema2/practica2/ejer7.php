@@ -27,6 +27,35 @@
     Tienes que intentar que sea lo más parecido posible. Como mínimo deberás tener 15 libros, y mostrar 4 libros en cada fila. 
     Los datos e imágenes de los libros deben ser lo más reales posible. Debes tener como mínimo 5 libros de novela histórica 
     y 5 de novela negra, pero sólo mostraremos los 4 primeros de cada una de esas categorías.*/
+        function pintarPorCategoria($productos, $categoria)
+        {
+            echo "<h3>" . strtoupper($categoria) . "</h3>";
+            $cont = 0;
+            foreach ($productos as $valor) {
+
+                if ($valor['categoria'] == $categoria) {
+
+                    if ($cont == 4)
+                        break;
+                    $cont++;
+
+                    echo "<div class='card mb-5' style='width: 16rem;'>
+                        <img src='" . $valor["imagen"] . "' class='card-img-top' alt='...'>
+                            <div class='card-body'>
+                            <h5 class='card-title'>" . $valor["nombre"] . "</h5>
+                            <p class='card-text'>" . $valor['descripcion'] . "</p>";
+
+                    echo "
+                            <p class='card-text'><small class='text-secondary'>" . $valor["precio"] . " €</small></p>
+
+                            <a href='#' class='btn btn-primary'>Comprar</a>
+                        </div>
+                    </div>";
+                }
+            }
+        }
+
+
 
         $carrito = array(
             array("ISBN" => 1234, "titulo" => "libro1", "descripcion" => "descripcion1", "categoría" => "terror", "editorial" => "A", "foto" => " ", "precio" => 38.20),
