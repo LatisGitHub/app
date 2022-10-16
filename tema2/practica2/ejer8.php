@@ -33,16 +33,17 @@
                                   </div>
                                   <div class='col-md-8'>
                                     <div class='card-body'>
-                                      <h5 class='card-title'>Card title</h5>
-                                      <p class='card-text'>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                      <p class='card-text'><small class='text-muted'>Last updated 3 mins ago</small></p>";
+                                      <h5 class='card-title'>". $valor["piloto"]     ."</h5>
+                                      <p class='card-text'>" .  $valor["descripcion"]  .  "</p>
+                                      <p class='card-text'> <b>" .  $valor["equipo"]  .  " </b></p>
+                                      <p class='card-text'> <b> POSICIÓN EN LAS ÚLTIMAS CARRERAS </b></p>";
 
                                       echo "<table class='table table-bordered blue-500'>";
                                       echo "<tr>";
                                       foreach ($valor['resultados'] as $res) {
-                                          echo "<td>";
+                                          echo "<td> <center>";
                                           echo  $res ;
-                                          echo "</td>";
+                                          echo "</td></center>";
                                       }
                                       echo "</tr>";
                                       echo "</table>"; 
@@ -52,18 +53,18 @@
                                   </div>
                                 </div>
                               </div> </center>";
-
-               
-
       }
     }
 
 
     //Productos de una tienda
     $productos = array(
-      array("clase" => "barbaro", "descripcion" => "desc", "habilidades" => "1,2,3..", "imagen" => "img/max.png", "resultados" => array("c1"=> 1, "c2"=> 1, "c3"=> 4,  "c3"=> 2)),
-      array("clase" => "barbaro", "descripcion" => "desc", "habilidades" => "1,2,3..", "imagen" => "img/leclerc.png", "resultados" => array("c1"=> 1, "c2"=> 1, "c3"=> 4,  "c3"=> 2)),
-      array("clase" => "barbaro", "descripcion" => "desc", "habilidades" => "1,2,3..", "imagen" => "img/falonso.png", "resultados" => array("c1"=> 1, "c2"=> 1, "c3"=> 4,  "c3"=> 2))
+      array("piloto" => "Fernando Alonso", "descripcion" => "Fernando Alonso Díaz (Oviedo, Asturias, 29 de julio de 1981) es un piloto de automovilismo español.", "habilidades" => "1,2,3..", "imagen" => "img/falonso.png", "equipo"=> "ALPINE", "resultados" => array("c1"=> 1, "c2"=> 3, "c3"=> 4,  "c3"=> 1, "c4"=> 2)),
+      array("piloto" => "Max Verstappen", "descripcion" => "Max Emilian Verstappen (Hasselt, 30 de septiembre de 1997) es un piloto neerlandés de automovilismo nacido en Bélgica.", "imagen" => "img/max.png","equipo"=> "RED BULL", "resultados" => array("c1"=> 2, "c2"=> 3, "c3"=> 8,  "c4"=> 4)),
+      array("piloto" => "Charles Leclerc", "descripcion" => "Charles Marc Hervé Perceval Leclerc, Montecarlo (Mónaco, 16 de octubre de 1997), más conocido como Charles Leclerc, es un piloto de automovilismo monegasco.", "imagen" => "img/f1_2022_cl_fer_lg.png", "equipo"=> "SCUDERIA FERRARI", "resultados" => array("c1"=> 3, "c2"=> 6, "c3"=> 4,  "c4"=> 2)),
+      array("piloto" => "Lewis Hamilton", "descripcion" => "Lewis Carl Davidson Larbalestier Hamilton​ (Stevenage, Hertfordshire, 7 de enero de 1985) es un piloto británico de automovilismo. ","imagen" => "img/hamilton.png", "equipo"=> "MERCEDES-AMG PETRONAS", "resultados" => array("c1"=> 5, "c2"=> 6, "c3"=> 4,  "c3"=> 1, "c4"=> 1)),
+      array("piloto" => "Mick Schumacher", "descripcion" => "Mick Schumacher (Suiza, 22 de marzo de 1999) es un piloto de automovilismo alemán nacido en Suiza.", "imagen" => "img/mick.png", "equipo"=> "HAAS", "resultados" => array("c1"=> 6, "c2"=> 3, "c3"=> 7,  "c3"=> 8, "c4"=> 6)),
+
     );
 
 
