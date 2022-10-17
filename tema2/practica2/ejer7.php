@@ -72,9 +72,7 @@
         echo "<div class='container'>";
         echo "<div class='row'>";
 
-        //Me quedo con los valores de la columna categoría, y los valores los meto en un array
         $categorias = array_column($productos, "categoria");
-        //Quito repetidos
         $categorias = array_unique($categorias);
 
         foreach ($categorias as $categoria)

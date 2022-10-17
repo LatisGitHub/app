@@ -57,7 +57,6 @@
     }
 
 
-    //Productos de una tienda
     $productos = array(
       array("piloto" => "Fernando Alonso", "descripcion" => "Fernando Alonso Díaz (Oviedo, Asturias, 29 de julio de 1981) es un piloto de automovilismo español.", "habilidades" => "1,2,3..", "imagen" => "img/falonso.png", "equipo"=> "ALPINE", "resultados" => array("c1"=> 1, "c2"=> 3, "c3"=> 4,  "c3"=> 1, "c4"=> 2)),
       array("piloto" => "Max Verstappen", "descripcion" => "Max Emilian Verstappen (Hasselt, 30 de septiembre de 1997) es un piloto neerlandés de automovilismo nacido en Bélgica.", "imagen" => "img/max.png","equipo"=> "RED BULL", "resultados" => array("c1"=> 2, "c2"=> 3, "c3"=> 8,  "c4"=> 4)),
@@ -66,50 +65,6 @@
       array("piloto" => "Mick Schumacher", "descripcion" => "Mick Schumacher (Suiza, 22 de marzo de 1999) es un piloto de automovilismo alemán nacido en Suiza.", "imagen" => "img/mick.png", "equipo"=> "HAAS", "resultados" => array("c1"=> 6, "c2"=> 3, "c3"=> 7,  "c3"=> 8, "c4"=> 6)),
 
     );
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    /*
-        //Pintar productos
-        echo "<table class='table table-striped table-hover'>";
-        echo "<thead class='text-primary'>";
-        echo "  <tr>";
-        //Sacamos el nombre de cada columna con array_keys del primer array (producto)
-        foreach(array_keys($productos[0]) as $valor)
-            echo "<td>".strtoupper($valor)."</td>";
-        echo "  </tr>";
-        echo "</thead>";
-        echo "<tbody>";
-        foreach($productos as $valor) {
-            echo "<tr>";
-            foreach($valor as $campo) {
-                echo "<td>";
-                echo $campo;
-                echo "</td>";
-            }
-            echo "</tr>";
-        }
-        echo "</tbody>";
-        echo "</table>";
-        echo "<br><br>";
-        */
 
 
     echo "<div class='container'>";
