@@ -66,7 +66,9 @@
 					</button>
 					<div class="collapse" id="tema3">
 					<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-						<li><a href="#" class="link-dark rounded">Ejercicio 1</a></li>
+						<li><a href="/tema3/practica1/login.php" class="link-dark rounded">Practica 1 - Login</a></li>
+						<li><a href="/tema3/practica1/proyectos.php" class="link-dark rounded">Practica 1 - Proyectos</a></li>
+
 					</ul>
 					</div>
 				</li>
