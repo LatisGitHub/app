@@ -1,4 +1,49 @@
 <?php
+//------------------------ funcion encriptar -----------------
+/*$clave  = 'Una cadena muy larga';
+
+$method = 'aes-256-cbc';
+
+$iv = base64_decode("C9fBxl1EWtYTL1/M8jfstw==");
+ function encriptar ($valor,$method, $clave, $iv) {
+     return openssl_encrypt ($valor, $method, $clave, false, $iv);
+ };
+ function desencriptar ($valor,$method, $clave, $iv) {
+     $encrypted_data = base64_decode($valor);
+     return openssl_decrypt($valor, $method, $clave, false, $iv);
+ };
+ $getIV = function () use ($method) {
+     return base64_encode(openssl_random_pseudo_bytes(openssl_cipher_iv_length($method)));
+ };
+*/
+function encriptar($mensaje, $clave)
+{   $palabraEncriptada="";
+    $letras = str_split($mensaje, 1);
+
+    foreach ($letras as $valor) {
+        $nums = ord($valor);
+        $nuev = chr($nums + $clave);
+        $palabraEncriptada .= $nuev;
+    }
+    return $palabraEncriptada;
+}
+
+function desencriptar($mensaje, $clave)
+{
+    $palabraDesc = "";
+    $letras = str_split($mensaje, 1);
+    
+    foreach ($letras as $valor) {
+        $nums = ord($valor);
+        $nuev = chr($nums - $clave);
+        $palabraDesc .= $nuev;
+    }
+    return $palabraDesc;
+
+}
+
+
+
 //Si he pinchado en un link
 if ($_GET) {
 
@@ -8,7 +53,7 @@ if ($_GET) {
 
         //Aquí desencriptas los datos
         //-----
-
+        $gustos = desencriptar($gustos, 3);
         //Separar los gustos y meterlos en un array
         $gustosArray = explode("#",$gustos);
 
@@ -31,48 +76,18 @@ if ($_GET) {
         $gustosString = implode("#", $gustosArray);
         
         //Aquí encriptas los datos 
-        //---------------
-
-
-        // -----------------------  $encriptado = password_hash($_GET['interes'], PASSWORD_DEFAULT);  -----------------------
-       /*
-        $clave  = 'Una cadena, muy, muy larga para mejorar la encriptacion';
-       //Metodo de encriptaciÃ³n
-       $method = 'aes-256-cbc';
-       // Puedes generar una diferente usando la funcion $getIV()
-       $iv = base64_decode("C9fBxl1EWtYTL1/M8jfstw==");
-        /*
-        Encripta el contenido de la variable, enviada como parametro.
-         */
-        /*
-        $encriptar = function ($valor) use ($method, $clave, $iv) {
-            return openssl_encrypt ($valor, $method, $clave, false, $iv);
-        };
-        /*
-        Desencripta el texto recibido
-       
-        $desencriptar = function ($valor) use ($method, $clave, $iv) {
-            $encrypted_data = base64_decode($valor);
-            return openssl_decrypt($valor, $method, $clave, false, $iv);
-        };
-        /*
-        Genera un valor para IV
-       
-        $getIV = function () use ($method) {
-            return base64_encode(openssl_random_pseudo_bytes(openssl_cipher_iv_length($method)));
-        };
-        */
-
-
-        //----------
+        $gustosString = encriptar($gustosString, 3);
         //Creación de la cookie
         setcookie('servidor',$gustosString, time()+60000, "/tema3", "localhost", false, true);
         //echo "Cookie creada";
     } else {
         //Primera vez que entra
-        setcookie('servidor',"CreacionCookie#moda-0#deporte-0#juegos-0", time()+60000, "/tema3", "localhost", false, true);
+        setcookie('servidor',encriptar("CreacionCookie#moda-0#deporte-0#juegos-0",3), time()+60000, "/tema3", "localhost", false, true);
     }
 
 
-    echo '<script>window.location="' . "index.php" . '"</script>';
+    header("Location: index.php");
 }
+
+
+?>

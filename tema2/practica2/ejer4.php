@@ -24,31 +24,35 @@
 
 
     function encriptar($mensaje, $clave)
-    {
+    {   $palabraEncriptada="";
         $letras = str_split($mensaje, 1);
 
         foreach ($letras as $valor) {
             $nums = ord($valor);
             $nuev = chr($nums + $clave);
-            echo $nuev;
+            $palabraEncriptada .= $nuev;
         }
-        echo "<br>";
+        return $palabraEncriptada;
     }
 
     function desencriptar($mensaje, $clave)
     {
+        $palabraDesc = "";
         $letras = str_split($mensaje, 1);
         
         foreach ($letras as $valor) {
             $nums = ord($valor);
             $nuev = chr($nums - $clave);
-            echo $nuev;
+            $palabraDesc .= $nuev;
         }
+        return $palabraDesc;
+
     }
 
 
 
     echo encriptar("hola esto es una prueba", 1);
+    echo "<br>";
     echo desencriptar("ipmb!ftup!ft!!vob!qsvfcb", 1);
 
 

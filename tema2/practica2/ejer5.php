@@ -17,39 +17,31 @@
      cada palabra. El desencriptador hará lo contrario (y no digo más). Muestra el programa funcionando encriptando
       y desencriptando.*/
     function encriptar($mensaje, $clave)
-    {
-        echo $mensaje;
-        echo "<br>";
+    {   $palabraEncriptada = "";
         $mensajeAlreves = strrev($mensaje);
-        echo $mensajeAlreves;
-        echo "<br>";
         $letras = str_split($mensajeAlreves, 1);
-
-
-
 
         foreach ($letras as $valor) {
             $nums = ord($valor);
             $nuev = chr($nums + $clave);
-            echo $nuev . " ";
+            $palabraEncriptada .= $nuev;
         }
-        echo "<br>";
+        return $palabraEncriptada;
     }
 
     function desencriptar($mensaje, $clave)
     {
-        echo $mensaje;
-        echo "<br>";
+        $palabraDes="";
         $mensajeAlreves = strrev($mensaje);
-        echo $mensajeAlreves;
-        echo "<br>";
         $letras = str_split($mensajeAlreves, 1);
 
         foreach ($letras as $valor) {
             $nums = ord($valor);
             $nuev = chr($nums - $clave);
-            echo $nuev . " ";
+            $palabraDes.= $nuev;
         }
+        return $palabraDes;
+
     }
     echo encriptar("hola", 1);
     echo "<br>";
