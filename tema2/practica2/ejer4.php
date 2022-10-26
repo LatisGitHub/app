@@ -23,6 +23,10 @@
         el original. Pista: utilizar las funciones PHP para pasar un carácter a su correspondiente dígito ASCII y al revés.*/
 
 
+
+      // ----- he quitado los echos que habia dentro despues de subirlo, por eso puede salir modificacion reciente  ---------- 
+
+
     function encriptar($mensaje, $clave)
     {   $palabraEncriptada="";
         $letras = str_split($mensaje, 1);

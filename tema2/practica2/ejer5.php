@@ -16,6 +16,8 @@
      anterior. Finalmente devolverá un string con cada palabra encriptada añadiendo un espacio en blanco entre 
      cada palabra. El desencriptador hará lo contrario (y no digo más). Muestra el programa funcionando encriptando
       y desencriptando.*/
+
+      // ----- he quitado los echos que habia dentro despues de subirlo, por eso puede salir modificacion reciente  ---------- 
     function encriptar($mensaje, $clave)
     {   $palabraEncriptada = "";
         $mensajeAlreves = strrev($mensaje);
