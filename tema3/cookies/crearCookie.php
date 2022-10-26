@@ -16,6 +16,7 @@ $iv = base64_decode("C9fBxl1EWtYTL1/M8jfstw==");
      return base64_encode(openssl_random_pseudo_bytes(openssl_cipher_iv_length($method)));
  };
 */
+//----------- no funciona en heroku, solo en el local -------------------------
 function encriptar($mensaje, $clave)
 {   $palabraEncriptada="";
     $letras = str_split($mensaje, 1);
