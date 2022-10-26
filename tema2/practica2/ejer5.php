@@ -17,7 +17,7 @@
      cada palabra. El desencriptador hará lo contrario (y no digo más). Muestra el programa funcionando encriptando
       y desencriptando.*/
 
-      // ----- he quitado los echos que habia dentro despues de subirlo, por eso puede salir modificacion reciente  ---------- 
+      // ----- he quitado los echos que habia dentro despues de subirlo, por eso puede salir modificado recientemente  ---------- 
     function encriptar($mensaje, $clave)
     {   $palabraEncriptada = "";
         $mensajeAlreves = strrev($mensaje);

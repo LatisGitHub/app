@@ -24,7 +24,7 @@
 
 
 
-      // ----- he quitado los echos que habia dentro despues de subirlo, por eso puede salir modificacion reciente  ---------- 
+      // ----- he quitado los echos que habia dentro despues de subirlo, por eso puede salir modificado recientemente  ---------- 
 
 
     function encriptar($mensaje, $clave)
