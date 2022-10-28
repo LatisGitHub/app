@@ -15,7 +15,7 @@ if (isset($_POST['accion'])) {
 
         if (isset($_POST["email"]) && isset($_POST["password"])) {
             $_SESSION['email'] = $_POST["email"];
-            $_SESSION['password'] = $_POST["password"];    
+            $_SESSION['password'] = $_POST["password"];
             $mayus = true;
 
             if (($_SESSION['password']) == strtolower($_SESSION['password'])) {
@@ -113,7 +113,6 @@ if ($_GET['accion'] == "borrarid") {
     }
     $_SESSION['proyectos'] = $proyectoNuevo;
     echo '<script>window.location="' . "proyectos.php" . '"</script>';
-
 }
 
 ?>
@@ -128,4 +127,10 @@ if ($_GET['accion'] == "info") {
     }
 }
 
+?>
+<?php
+if ($_GET['accion'] == "cerrar") {
+    session_destroy();
+    echo '<script>window.location="' . "login.php" . '"</script>';
+}
 ?>
