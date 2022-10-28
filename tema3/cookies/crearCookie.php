@@ -79,11 +79,11 @@ if ($_GET) {
         //Aquí encriptas los datos 
         $gustosString = encriptar($gustosString, 3);
         //Creación de la cookie
-        setcookie('servidor',$gustosString, time()+60000, "/tema3", "localhost", false, true);
+        setcookie('servidor',$gustosString, time()+60000, "/tema3", "tema2php.herokuapp.com", true, false);
         //echo "Cookie creada";
     } else {
         //Primera vez que entra
-        setcookie('servidor',encriptar("CreacionCookie#moda-0#deporte-0#juegos-0",3), time()+60000, "/tema3", "localhost", false, true);
+        setcookie('servidor',encriptar("CreacionCookie#moda-0#deporte-0#juegos-0",3), time()+60000, "/tema3", "tema2php.herokuapp.com", true, false);
     }
 
 
