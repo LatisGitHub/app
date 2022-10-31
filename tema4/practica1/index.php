@@ -6,7 +6,7 @@ use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
 //Load Composer's autoloader
-require './vendor/autoload.php';
+require '../vendor/autoload.php';
 
 //Create an instance; passing `true` enables exceptions
 $mail = new PHPMailer(true);
@@ -17,14 +17,14 @@ try {
     $mail->isSMTP();                                            //Send using SMTP
     $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
     $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-    $mail->Username   = 'jjavierguillen@gmail.com';                     //SMTP username
-    $mail->Password   = 'feaucnjdvdfdtakx';                               //SMTP password
+    $mail->Username   = 'latischannel2@gmail.com';                     //SMTP username
+    $mail->Password   = 'xsobpsiptdlxpgky';                               //SMTP password
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
     $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
     //Recipients
-    $mail->setFrom('jjavierguillen@gmail.com', 'Javier');
-    $mail->addAddress('jjavierguillen@gmail.com', 'ProfeJJ');     //Add a recipient
+    $mail->setFrom('latischannel2@gmail.com', 'Lati');
+    $mail->addAddress('latischannel2@gmail.com', 'Yo misma');     //Add a recipient
     //$mail->addAddress('ellen@example.com');               //Name is optional
     //$mail->addReplyTo('info@example.com', 'Information');
     //$mail->addCC('cc@example.com');

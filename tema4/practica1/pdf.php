@@ -1,7 +1,12 @@
 <?php
+session_start();
+?>
+<?php
+
+$proyectos = $_SESSION['proyectos'];
 
 //Load Composer's autoloader
-require './vendor/autoload.php';
+require '../vendor/autoload.php';
 
 // create new PDF document
 $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
@@ -60,13 +65,36 @@ $pdf->AddPage();
 $pdf->setTextShadow(array('enabled'=>true, 'depth_w'=>0.2, 'depth_h'=>0.2, 'color'=>array(196,196,196), 'opacity'=>1, 'blend_mode'=>'Normal'));
 
 // Set some content to print
-$html = <<<EOD
-<h1>Welcome to <a href="http://www.tcpdf.org" style="text-decoration:none;background-color:#CC0000;color:black;">&nbsp;<span style="color:black;">TC</span><span style="color:white;">PDF</span>&nbsp;</a>!</h1>
-<i>This is the first example of TCPDF library.</i>
-<p>This text is printed using the <i>writeHTMLCell()</i> method but you can also use: <i>Multicell(), writeHTML(), Write(), Cell() and Text()</i>.</p>
-<p>Please check the source code documentation and other examples for further information.</p>
-<p style="color:#CC0000;">TO IMPROVE AND EXPAND TCPDF I NEED YOUR SUPPORT, PLEASE <a href="http://sourceforge.net/donate/index.php?group_id=128076">MAKE A DONATION!</a></p>
-EOD;
+
+
+
+$html = "
+<h1>PROYECTOS</h1>
+<i>Todos los proyectos de mi empresa</i><br><br>";
+$html .= "<table border='1'>";
+$html .= "<tr><td>Nombre</td><td>Descripción</td><td>Importancia</td><td>Porcentaje</td></tr>";
+
+foreach($proyectos as $proyecto) {
+	$html .= "<tr>";
+	$html .= "<td>".$proyecto['nombre']."</td>";
+	$html .= "<td>".$proyecto['fechaInicio']."</td>";
+	$html .= "<td>".$proyecto['fechaFinPrevista']."</td>";
+	$html .= "<td>".$proyecto['diasTranscurridos']."</td>";
+	$html .= "<td>".$proyecto['porcentajeCompletado']."</td>";
+	$html .= "<td>".$proyecto['importancia']."</td>";
+
+	$html .= "</tr>";
+}
+
+$html .= "</table>";
+
+
+
+
+
+
+
+
 
 // Print text using writeHTMLCell()
 $pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
