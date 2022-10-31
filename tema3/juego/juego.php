@@ -49,7 +49,7 @@
     <a href="controlador.php?letra=entrar" class="btn btn-danger mt-5 px-5">PLAY!</a>
     <BR>
 
-        <img src="imagenes/bienvenido.gif" alt="" width="30%" height="30%" style="margin-top:13%;">
+        <img src="imagenes/BIENVENIDO.gif" alt="" width="30%" height="30%" style="margin-top:13%;">
 
     </center>
  
