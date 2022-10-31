@@ -69,7 +69,7 @@
 						<li><a href="/tema3/practica1/proyectos.php" class="link-dark rounded">Practica 1 - Proyectos</a></li>
 						<li><a href="/tema3/cookies/index.php" class="link-dark rounded">Practica Cookies - index</a></li>
 						<li><a href="/tema3/cookies/publicidad.php" class="link-dark rounded">Practica Cookies - publicidad</a></li>
-						<li><a href="/tema3/juego/index.php" class="link-dark rounded">Juego - Index</a></li>
+						<li><a href="/tema3/juego/juego.php" class="link-dark rounded">Juego - Index</a></li>
 
 
 					</ul>
