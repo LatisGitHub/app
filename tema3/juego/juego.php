@@ -21,7 +21,7 @@
            /* background-repeat: no-repeat;
             background-image: url('imagenes/fondo.jpg');
             background-size: cover;
-*/
+*/          background-color:black;
         }
 
         img {
@@ -30,7 +30,7 @@
     </style>
 </head>
 
-<body style="background-color:black;">
+<body>
 <img src="imagenes/doge.gif" alt="" style="margin-left:80%;">
 
     <div class='container'>
