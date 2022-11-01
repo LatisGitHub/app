@@ -53,9 +53,9 @@ echo "<div class='row'>";
 echo "<div class='col-12'>";
 foreach ($abecedario as $abec) {
     if (in_array($abec, $_SESSION['letras'])) {
-        echo "<a href='controlador.php?letra=" . $abec . "' class='btn btn-primary m-1'>" . strtoupper($abec) . "</a>";
-    }else{
         echo "<a href='controlador.php?letra=" . $abec . "' class='btn btn-danger m-1'>" . strtoupper($abec) . "</a>";
+    }else{
+        echo "<a href='controlador.php?letra=" . $abec . "' class='btn btn-primary m-1'>" . strtoupper($abec) . "</a>";
 
     }
 
