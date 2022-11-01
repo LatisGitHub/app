@@ -30,16 +30,16 @@ echo '<html lang="en">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>AHORCADO</title>
 </head>
 <body style="background-color:black;">';
 
 echo "<br>";
 echo "<center>";
 
-echo "<p class='h3 mb-2'> Letras dichas <br>";
+echo "<p class='h3 mb-2'> LETRAS DICHAS <br>";
 foreach ($_SESSION['letras'] as $letra) {
-    echo $letra . ", ";
+    echo strtoupper($letra) . " - ";
 }
 echo "</p><br>";
 
@@ -52,7 +52,13 @@ $contador = 0;
 echo "<div class='row'>";
 echo "<div class='col-12'>";
 foreach ($abecedario as $abec) {
-    echo "<a href='controlador.php?letra=" . $abec . "' class='btn btn-primary m-1'>" . strtoupper($abec) . "</a>";
+    if (in_array($abec, $_SESSION['letras'])) {
+        echo "<a href='controlador.php?letra=" . $abec . "' class='btn btn-primary m-1'>" . strtoupper($abec) . "</a>";
+    }else{
+        echo "<a href='controlador.php?letra=" . $abec . "' class='btn btn-danger m-1'>" . strtoupper($abec) . "</a>";
+
+    }
+
     $letrita = $abec;
     $contador++;
     if ($contador % 14 == 0) {
@@ -64,9 +70,8 @@ echo "</div>";
 
 pintarFallos($_SESSION['fallos']);
 echo "<br>";
-for($i=0; $i<strlen($_SESSION['palabraActual']); $i++) {
-    echo "<a class='h1 m-1' style=none >" . strtoupper($_SESSION['palabraActual'][$i]) . "  ". "</a>";
-
+for ($i = 0; $i < strlen($_SESSION['palabraActual']); $i++) {
+    echo "<a class='h1 m-1' style=none >" . strtoupper($_SESSION['palabraActual'][$i]) . "  " . "</a>";
 }
 //echo "<p class='h1 mt-5'>TU PALABRA <br><br> " . strtoupper($_SESSION['palabraActual']) . "</p><br>";
 echo "</center>";

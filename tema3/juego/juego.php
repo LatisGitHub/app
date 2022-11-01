@@ -24,9 +24,6 @@
 */          background-color:black;
         }
 
-        img {
-           
-        }
     </style>
 </head>
 

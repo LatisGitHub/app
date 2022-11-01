@@ -82,7 +82,7 @@
 					</button>
 					<div class="collapse" id="tema4">
 					<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-					<li><a href="/tema4/practica1/login.php" class="link-dark rounded">Enviar Email - Login</a></li>
+					<li><a href="/tema4/practicaEmail/login.php" class="link-dark rounded">Enviar Email - Login</a></li>
 					</ul>
 					</div>
 				</li>
