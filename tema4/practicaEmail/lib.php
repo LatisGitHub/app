@@ -152,7 +152,7 @@ function enviarEmail()
         //$mail->addReplyTo('info@example.com', 'Information');
         //$mail->addCC('cc@example.com');
         //$mail->addBCC('bcc@example.com');
-
+        //PRUEBA
         //Attachments
         //$mail->addAttachment('/var/tmp/file.tar.gz');         //Add attachments
         $mail->addAttachment('./ejemplo.pdf', 'ejemplo.pdf');    //Optional name
