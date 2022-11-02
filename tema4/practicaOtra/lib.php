@@ -1,5 +1,5 @@
 <?php
-require '../../vendor/autoload.php';
+require '../vendor/autoload.php';
 
 //Función para limpiar los input de los formularios
 function filtrado($datos)
