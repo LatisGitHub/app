@@ -33,60 +33,13 @@ echo '<html lang="en">
     <title>AHORCADO</title>
 </head>
 <body style="background-color:black;">';
-
-echo "<br>";
-echo "<center>";
-
-echo "<p class='h3 mb-2'> LETRAS DICHAS <br>";
-foreach ($_SESSION['letras'] as $letra) {
-    echo strtoupper($letra) . " - ";
-}
-echo "</p><br>";
-
-$abecedario = [
-    "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o",
-    "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"
-];
-
-$contador = 0;
-echo "<div class='row'>";
-echo "<div class='col-12'>";
-foreach ($abecedario as $abec) {
-    if (in_array($abec, $_SESSION['letras'])) {
-        echo "<a href='controlador.php?letra=" . $abec . "' class='btn btn-danger m-1'>" . strtoupper($abec) . "</a>";
-    }else{
-        echo "<a href='controlador.php?letra=" . $abec . "' class='btn btn-primary m-1'>" . strtoupper($abec) . "</a>";
-
-    }
-
-    $letrita = $abec;
-    $contador++;
-    if ($contador % 14 == 0) {
-        echo "<br>";
-    }
-}
-echo "</div>";
-echo "</div>";
-
-pintarFallos($_SESSION['fallos']);
-echo "<br>";
-for ($i = 0; $i < strlen($_SESSION['palabraActual']); $i++) {
-    echo "<a class='h1 m-1' style=none >" . strtoupper($_SESSION['palabraActual'][$i]) . "  " . "</a>";
-}
-//echo "<p class='h1 mt-5'>TU PALABRA <br><br> " . strtoupper($_SESSION['palabraActual']) . "</p><br>";
-echo "</center>";
-
-
-
-echo "</div>";
-
-
 if ($_SESSION['palabra'] == $_SESSION['palabraActual']) {
-    ganar();
+    pintarGanador();
+} else if ($_SESSION['fallos'] < 7) {
+    juegoprincipal();
+} else if ($_SESSION['fallos'] == 7) {
+    pintarPerdedor();
 }
-if ($_SESSION['fallos'] == 7) {
-    perder();
-}
+
 echo '</body> </html>';
-//echo  $_SESSION['palabra'];
 ?>

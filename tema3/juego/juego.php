@@ -15,24 +15,21 @@
     <script>
         let sonido = new Audio("imagenes/undertale.mp3");
         sonido.play();
+        sonido.volume = 0.5;
     </script>
     <style>
         body {
-           /* background-repeat: no-repeat;
-            background-image: url('imagenes/fondo.jpg');
-            background-size: cover;
-*/          background-color:black;
+            background-color: black;
         }
-
     </style>
 </head>
 
 <body>
-<img src="imagenes/doge.gif" alt="" style="margin-left:80%;">
+    <img src="imagenes/doge.gif" alt="" style="margin-left:80%;">
 
     <div class='container'>
         <center>
-            <img src="imagenes/ahorcado.png" alt="" >
+            <img src="imagenes/ahorcado.png" alt="">
             <div class='row'>
                 <div class='col-3'>
                     <form action="controlador.php" method='get'>
@@ -43,13 +40,13 @@
         </center>
     </div>
     <center>
-    <a href="controlador.php?letra=entrar" class="btn btn-danger mt-5 px-5">PLAY!</a>
-    <BR>
+        <a href="controlador.php?letra=entrar" class="btn btn-danger mt-5 px-5">PLAY!</a>
+        <BR>
 
         <img src="imagenes/BIENVENIDO.gif" alt="" width="30%" height="30%" style="margin-top:13%;">
 
     </center>
- 
+
 
 </body>
 
