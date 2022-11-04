@@ -20,16 +20,6 @@ function diccionario()
     return $palabra;
 }
 
-function ganar()
-{
-    echo '<script>window.location="' . "ganador.php" . '"</script>';
-}
-
-function perder()
-{
-    echo '<script>window.location="' . "perdedor.php" . '"</script>';
-}
-
 function repetidos($letraPulsada)
 {
     $encontrado = false;
