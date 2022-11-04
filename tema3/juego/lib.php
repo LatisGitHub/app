@@ -152,7 +152,7 @@ function juegoprincipal()
     for ($i = 0; $i < strlen($_SESSION['palabraActual']); $i++) {
         echo "<a class='h1 m-1' style=none >" . strtoupper($_SESSION['palabraActual'][$i]) . "  " . "</a>";
     }
-    //echo "<p class='h1 mt-5'>TU PALABRA <br><br> " . strtoupper($_SESSION['palabraActual']) . "</p><br>";
+    ///echo "<p class='h1 mt-5'>TU PALABRA <br><br> " . strtoupper($_SESSION['palabraActual']) . "</p><br>";
     echo "</center>";
 
 
