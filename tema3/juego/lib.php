@@ -12,7 +12,7 @@ function nuevaPalabra()
 function diccionario()
 {
     $_SESSION['diccionario'] = [
-        'hola', 'gato', 'perro', 'cabra', 'coche', 'manzana', 'ordenador', 'impresora', 'pelo', 'collar', 'carta',
+        'hola', 'gato', 'perro', 'espada', 'coche', 'manzana', 'ordenador', 'impresora', 'pelo', 'collar', 'carta',
         'chaqueta'
     ];
     $indice = rand(0, 11);
