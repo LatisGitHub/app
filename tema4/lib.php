@@ -135,14 +135,15 @@ function enviarEmail()
     $mail = new PHPMailer(true);
 
     try {
-        $variable = 'latischannel2@gmail.com';
+        $em = 'latischannel2@gmail.com';
+        $t = 'lurgksygbowsiyqd';
         //Server settings
         $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
         $mail->isSMTP();                                            //Send using SMTP
         $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
         $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-        $mail->Username   = $variable;                     //SMTP username
-        $mail->Password   = 'lurgksygbowsiyqd';                               //SMTP password
+        $mail->Username   = $em;                     //SMTP username
+        $mail->Password   = $t;                               //SMTP password
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
         $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
