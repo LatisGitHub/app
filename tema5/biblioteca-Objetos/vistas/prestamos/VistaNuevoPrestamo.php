@@ -7,7 +7,7 @@ class VistaNuevoPrestamo
     public static function formulario($usuarios, $libros)
     {
 
-        include_once("./plantilla/cabecera.php");
+        include_once("cabecera2.php");
         //id, idUsuario, idLibro, fecha_inicio, fecha_fin, estado
         echo '
         <div class="container">
@@ -68,6 +68,6 @@ class VistaNuevoPrestamo
               </div>          
               </div>          
               </div>';
-        include_once("./plantilla/pie.php");
+        include_once("pie2.php");
     }
 }

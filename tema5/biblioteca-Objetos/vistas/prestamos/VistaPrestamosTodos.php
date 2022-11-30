@@ -6,7 +6,7 @@ class VistaPrestamosTodos
   public static function render($prestamos)
   {
 
-    include_once("./plantilla/cabecera.php");
+    include_once("cabecera2.php");
 
     echo '<table class="ml-2">';
     echo "<tr>";
@@ -86,6 +86,6 @@ class VistaPrestamosTodos
     echo '</tbody>';
     echo "</table>";
 
-    include("./plantilla/pie.php");
+    include("pie2.php");
   }
 }
