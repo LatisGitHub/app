@@ -54,7 +54,7 @@ if ($_REQUEST) {
             echo '<script>window.location="' . "enrutador.php?accion=inicio" . '"</script>';
         }
         if ($_REQUEST['accion'] == "nuevoPrestamo") {
-            controladorPrestamo::pintarFormulario();
+            ControladorPrestamo::pintarFormulario();
         }
         if ($_REQUEST['accion'] == "insertarPrestamo") {
             $idLibro = $_REQUEST['idLibro'];
