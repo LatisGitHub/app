@@ -100,7 +100,7 @@ if ($_REQUEST) {
             $year = $_REQUEST['year'];
             $id_usuario = unserialize($_SESSION['usuario'])->getId();
 
-            controladorRegalo::BusquedaYear($year, $id_usuario);
+            ControladorRegalo::BusquedaYear($year, $id_usuario);
         }
 
         if ($_REQUEST['accion'] == "verEnlaces") {
