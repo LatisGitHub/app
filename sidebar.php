@@ -70,8 +70,6 @@
 						<li><a href="/tema3/cookies/index.php" class="link-dark rounded">Practica Cookies - index</a></li>
 						<li><a href="/tema3/cookies/publicidad.php" class="link-dark rounded">Practica Cookies - publicidad</a></li>
 						<li><a href="/tema3/juego/juego.php" class="link-dark rounded">Juego - Index</a></li>
-
-
 					</ul>
 					</div>
 				</li>
@@ -94,6 +92,17 @@
 					<div class="collapse" id="dashboard-collapse">
 					<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
 						<li><a href="/tema5/biblioteca-Objetos/index.php" class="link-dark rounded">Ejercicio biblioteca</a></li>
+					</ul>
+					</div>
+				</li>
+
+				<li class="mb-1">
+					<button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
+					TEMA 6
+					</button>
+					<div class="collapse" id="dashboard-collapse">
+					<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+						<li><a href="/tema6/regalos/index.php" class="link-dark rounded">Ejercicio regalos</a></li>
 					</ul>
 					</div>
 				</li>
