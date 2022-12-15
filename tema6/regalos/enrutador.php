@@ -136,7 +136,7 @@ if ($_REQUEST) {
 
         if ($_REQUEST['accion'] == 'pdf') {
             $id_usuario = unserialize($_SESSION['usuario'])->getId();
-            controladorRegalo::generarPDF($id_usuario);
+            ControladorRegalo::generarPDF($id_usuario);
         }
     }
 }
