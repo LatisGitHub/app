@@ -60,6 +60,13 @@
                 </center>
                 </li>
 
+                <li class="mt-3">
+                <center>
+                <a href="enrutador.php?accion=pdf"  style="color:RED;" >GENERAR PDF</a>
+                </center>
+                </li>
+
+
                 <!-- Sidebar Toggler (Sidebar) -->
 
 

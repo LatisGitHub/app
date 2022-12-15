@@ -9,7 +9,7 @@ class VistaRegalos
     echo '<table class="ml-2 ">';
     echo "<tr>";
     echo '<form action="enrutador.php" method="post"> 
-                <td><label style="color:black"> YEAR </label></td>';
+                <td><label style="color:black"> AÑO </label></td>';
     echo '<td><input type="text" name="year"></td>';
     echo "<input type='hidden' name='accion' value='busquedaYEAR'>";
     echo '<td><button type="submit"> BUSCAR </button></td>';
@@ -19,7 +19,6 @@ class VistaRegalos
             </tr>
             </table>';
     echo '<a class="btn btn-info mb-3" style="float: right" href="#" data-toggle="modal" data-target="#modalNuevoRegalo">NUEVO REGALO</a>';
-    echo '<a href="enrutador.php?accion=pdf" class="btn btn-danger">PDF</a>';
     echo "<table class='table table-striped' style='font-size: 15px;align-items: center;' id='dataTable' width='100%' cellspacing='0'>";
     //Cabecera
     echo "<tr>";
