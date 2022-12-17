@@ -11,7 +11,7 @@
         }
 
         public function __toString() {
-            return "".$this->numero."-".$this->palo.".png";
+            return "<img src='./cards/".$this->palo."".$this->numero.".png' width='11%'>";
         }
 
         /**

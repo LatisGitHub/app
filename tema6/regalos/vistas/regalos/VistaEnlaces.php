@@ -10,7 +10,7 @@ class VistaEnlaces
           //  <input type='hidden' name='accion' value='ordenar'>
            // <button type='submit' class='btn btn-info'>ORDENAR</button>
     //</form>";
-    echo '<td><a href="enrutador.php?accion=ordenar" class="btn btn-success">ORDENAR↓</a> </td>';
+    echo '<td><a href="enrutador.php?accion=ordenar&idregalo='. $_REQUEST['idregalo'].'" class="btn btn-success">ORDENAR↓</a> </td>';
 
     echo ' <div class="row justify-content-center">
     <div class="col-11">

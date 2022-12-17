@@ -3,7 +3,7 @@
     class BarajaInglesa extends Baraja {
 
         protected static $palos = array("c","d","p","t");
-        protected static $figuras = array(1,2,3,4,5,6,7,8,9,10,11,12);
+        protected static $figuras = array(1,2,3,4,5,6,7,8,9,11,12);
 
         public function __construct() {
             parent::__construct();

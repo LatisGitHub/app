@@ -128,15 +128,21 @@ if ($_REQUEST) {
         }
 
         if ($_REQUEST['accion'] == 'ordenar') {
-            $id_regalo = $_SESSION['id_regalo'];
+            $id_regalo = $_REQUEST['idregalo'];
             ControladorEnlace::enlacesOrdenados($id_regalo);
-            $_SESSION['id_regalo']= null;
+            //$_SESSION['id_regalo']= null;
         }
 
 
         if ($_REQUEST['accion'] == 'pdf') {
             $id_usuario = unserialize($_SESSION['usuario'])->getId();
             ControladorRegalo::generarPDF($id_usuario);
+        }
+
+        if ($_REQUEST['accion'] == 'cerrar') {
+            session_destroy();
+            echo '<script>window.location="' . "enrutador.php?accion=inicio" . '"</script>';
+
         }
     }
 }

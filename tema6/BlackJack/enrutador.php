@@ -13,6 +13,10 @@
         if (file_exists($ruta)){ 
             include_once $ruta; 
         }
+        $ruta = "$clase.php"; 
+        if (file_exists($ruta)){ 
+            include_once $ruta; 
+        }
 
         $ruta = "./vistas/$clase.php"; 
         if (file_exists($ruta)){ 
@@ -36,6 +40,12 @@
             //Inicio - Formulario Login
             if ($_REQUEST['accion'] == "inicio") {
                 ControladorPartida::iniciarPartida();
+            }
+
+            if ($_REQUEST['accion'] == "pedir") {
+                $partida = unserialize($_SESSION['partida']);
+                $partida->getJugador()->nuevaCarta($partida->getBaraja()->repartirCarta());
+                echo $partida;
             }
 
 

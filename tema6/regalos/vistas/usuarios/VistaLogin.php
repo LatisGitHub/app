@@ -26,20 +26,19 @@ class VistaLogin
 
                 <div class='row justify-content-center'>
                     <div class='col-6 m-3'>
-                        <h2>LOGIN REGALOS</h2>
+                        <center><h2>LOGIN REGALOS</h2></center>
                         <p class='text-danger'><?= $mensaje; ?></p>
                         <form action='enrutador.php' method='post'>
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Email address</label>
+                                <label for="exampleInputEmail1">Email</label>
                                 <input type="email" name='email' class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Introduce tu correo">
-                                <small id="emailHelp" class="form-text text-muted">Introduce tu correo</small>
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputPassword1">Password</label>
+                                <label for="exampleInputPassword1">Contraseña</label>
                                 <input type="password" name='password' class="form-control" id="exampleInputPassword1" placeholder="Contraseña">
                             </div>
                             <input type='hidden' name='accion' value='checkLogin'>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary">Enviar</button>
                         </form>
                     </div>
                 </div>
