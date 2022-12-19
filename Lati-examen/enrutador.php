@@ -104,6 +104,12 @@ if ($_REQUEST) {
             ControladorPartida::apuntarse($id_jugador, $id);
         }
 
+        if ($_REQUEST['accion'] == 'cerrar') {
+            session_destroy();
+            echo '<script>window.location="' . "enrutador.php?accion=inicio" . '"</script>';
+
+        }
+
         
     }
 }
