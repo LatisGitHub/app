@@ -98,16 +98,16 @@ if ($_REQUEST) {
             ControladorPartida::insertarPartida($fecha, $hora, $ciudad, $lugar, $cubierto, $estado, $id_jugador1);
         }
 
+        //accion apuntarse
         if ($_REQUEST['accion'] == 'apuntate') {
             $id_jugador = unserialize($_SESSION['usuario'])->getId();
             $id_partida = $_SESSION['id_partida'];
             ControladorPartida::apuntarse($id_jugador, $id);
         }
-
+        //cerrar sesion
         if ($_REQUEST['accion'] == 'cerrar') {
             session_destroy();
             echo '<script>window.location="' . "enrutador.php?accion=inicio" . '"</script>';
-
         }
 
         
