@@ -18,7 +18,7 @@
             include_once $ruta; 
         }
 
-        $ruta = "./vistas/$clase.php"; 
+        $ruta = "./vista/$clase.php"; 
         if (file_exists($ruta)){ 
             include_once $ruta; 
         }
@@ -44,8 +44,7 @@
 
             if ($_REQUEST['accion'] == "pedir") {
                 $partida = unserialize($_SESSION['partida']);
-                $partida->getJugador()->nuevaCarta($partida->getBaraja()->repartirCarta());
-                echo $partida;
+                ControladorPartida::pedir($partida);
             }
 
 
