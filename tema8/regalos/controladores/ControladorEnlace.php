@@ -8,10 +8,18 @@
 
         public static function borrarEnlace($id) {
             EnlaceBD::borrarEnlace($id);
+            
         }
+
 
         public static function insertarEnlace($nombre, $url, $precio, $imagen, $prioridad, $id_regalo){
             EnlaceBD::insertarEnlace($nombre, $url, $precio, $imagen, $prioridad, $id_regalo);
+        }
+
+
+        public static function enlacesOrdenados($id_regalo) {
+            $enlaces = EnlaceBD::enlacesOrdenados($id_regalo);
+            VistaEnlaces::render($enlaces);
         }
 
     }

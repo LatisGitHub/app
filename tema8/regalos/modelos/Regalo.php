@@ -19,7 +19,7 @@ class Regalo
         $this->precio = $precio;
         $this->estado = $estado;
         $this->anio = $anio;
-        $this->$id_usuario = $id_usuario;
+        $this->id_usuario = $id_usuario;
     }
 
     /**

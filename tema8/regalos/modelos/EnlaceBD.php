@@ -5,16 +5,16 @@ class EnlaceBD
     {
         $conexion = ConexionBD::conectar();
 
-        //Consulta BBDD
-        $stmt = $conexion->prepare("SELECT * from enlaces 
-           WHERE id_regalo = ?");
+        $coleccion = $conexion->enlaces;
 
-        $stmt->bindValue(1, $id_regalo);
+        $cursor = $coleccion->find(["id_regalo"=>$id_regalo]);
 
-        $stmt->execute();
-
-        //Usamos FETCH_CLASS para que convierta a objetos las filas de la BD
-        $enlaces = $stmt->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Enlace');
+        //Crear los objetos para devolverlos (MVC), Mongo me devuelve array asociativo
+        $enlaces = array();
+        foreach($cursor as $enlace) {
+           $enlace_OBJ = new Enlace($enlace['id'],$enlace['nombre'],$enlace['url'],$enlace['precio'],$enlace['imagen'],$enlace['prioridad'],$enlace['id_regalo']);
+           array_push($enlaces, $enlace_OBJ);
+        }
 
         ConexionBD::cerrar();
 
@@ -23,39 +23,65 @@ class EnlaceBD
 
 
 
-
     public static function borrarEnlace($id)
     {
         $conexion = ConexionBD::conectar();
 
-        //Consulta BBDD
-        $stmt = $conexion->prepare("DELETE FROM enlaces WHERE id  = ?");
+        $deleteResult = $conexion->enlaces->deleteOne(['id' => intVal($id)]); 
 
-        $stmt->bindValue(1, $id);
-
-        $stmt->execute();
         ConexionBD::cerrar();
     }
 
+    //funciona pero NO LOS PINTA TRAS INSERTAR
     public static function insertarEnlace($nombre, $url, $precio, $imagen, $prioridad, $id_regalo)
     {
         $conexion = ConexionBD::conectar();
 
-        //Consulta BBDD
-        //UPDATE table_name
-        //SET column1 = value1, column2 = value2, ...
-        //WHERE condition;
-        $stmt = $conexion->prepare("INSERT INTO enlaces (nombre, url, precio, imagen, prioridad, id_regalo)
-        VALUES (?, ?, ?, ?, ?, ?)");
-        $stmt->bindValue(1, $nombre);
-        $stmt->bindValue(2, $url);
-        $stmt->bindValue(3, $precio);
-        $stmt->bindValue(4, $imagen);
-        $stmt->bindValue(5, $prioridad);
-        $stmt->bindValue(6, $id_regalo);
+        //Hacer el autoincrement
+        //Ordeno por id, y me quedo con el mayor
+        $enlaceMayor = $conexion->enlaces->findOne(
+            [],
+            [
+                'sort' => ['id_regalo' => -1],
+            ]);
+        if (isset($enlaceMayor))
+            $idValue = $enlaceMayor['id_regalo'];
+        else
+            $idValue = 0;
 
-        $stmt->execute();
+        $enlace = new Enlace($idValue, $nombre, $url, $precio, $imagen, $prioridad, $id_regalo);
+        //Collección 'usuarios'
+        $insertOneResult = $conexion->enlaces->insertOne([
+            'id' => intVal($idValue + 1),
+            'nombre' => $enlace->getNombre(),
+            'url' => $enlace->getUrl(),
+            'precio' => $enlace->getPrecio(),
+            'imagen' => $enlace->getImagen(),
+            'prioridad' => $enlace->getPrioridad(),
+            'id_regalo' => $enlace->getId_regalo(),
+        ]);
 
         ConexionBD::cerrar();
+
+
+        
+    }
+    public static function enlacesOrdenados($id_regalo)
+    {
+        $conexion = ConexionBD::conectar();
+
+        $coleccion = $conexion->enlaces;
+
+        $cursor = $coleccion->find(["id_regalo"=>$id_regalo],["sort"=>["precio"=>1]]);
+
+        $enlaces = array();
+        foreach($cursor as $enlace) {
+           $enlace_OBJ = new Enlace($enlace['id'],$enlace['nombre'],$enlace['url'],$enlace['precio'],$enlace['imagen'],$enlace['prioridad'],$enlace['id_regalo']);
+           array_push($enlaces, $enlace_OBJ);
+        }
+
+        ConexionBD::cerrar();
+
+        return $enlaces;
     }
 }

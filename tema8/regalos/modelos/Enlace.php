@@ -17,7 +17,7 @@
         $this->precio = $precio;
         $this->imagen = $imagen;
         $this->prioridad = $prioridad;
-        $this->$id_regalo = $id_regalo;
+        $this->id_regalo = $id_regalo;
     }
 
         /**

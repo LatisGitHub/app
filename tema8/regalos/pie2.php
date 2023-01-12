@@ -93,7 +93,43 @@
 
 
 <!-- MODAL INSERTAR ENLACE -->
+<div class="modal fade" id="modalNuevoEnlace" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Nuevo Enlace</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="formNuevoEnlace" class="row g-3 needs-validation">
+                    <div class="col-md-10">
+                        <label class="form-label">Nombre</label>
+                        <input type="text" class="form-control" name="nombre" required>
+                    </div>
+                    <div class="col-md-10">
+                        <label class="form-label">Url</label>
+                        <input type="text" class="form-control" name="url" required>
+                    </div>
+                    <div class="col-md-10">
+                        <label class="form-label">Precio</label>
+                        <input type="number" class="form-control" name="precio" required>
+                    </div>
+                    <div class="col-md-10">
+                        <label class="form-label">Imagen</label>
+                        <input type="text" class="form-control" name="imagen" required>
+                    </div>
+                    <div class="col-md-10">
+                        <label class="form-label">Prioridad</label>
+                        <input name="prioridad" type="range" min="1" max="3" >
+                    </div>
+                    <input type="hidden" name="id_regalo" value="<?php echo $_GET['idregalo'] ?>">
+                    <input type="hidden" name="accion" value="crearEnlace">
+                    <button type="submit" accion="nuevoEnlace" class="btn btn-primary form-control">Crear</button>
+                </form>
+            </div>
 
+        </div>
+    </div>
 
 
 </div>

@@ -62,7 +62,7 @@ if ($_REQUEST) {
         }
 
         if ($_REQUEST['accion'] == "borrarid") {
-            $id = $_REQUEST['id'];
+            $id = $_REQUEST['idborrar'];
             ControladorRegalo::borrarRegalo($id);
             $id_usuario = unserialize($_SESSION['usuario'])->getId();
             ControladorRegalo::mostrarRegalos($id_usuario);
@@ -77,9 +77,9 @@ if ($_REQUEST) {
             $anio = filtrado($_REQUEST['anio']);
             $id_usuario = unserialize($_SESSION['usuario'])->getId();
 
-           ControladorRegalo::insertarRegalo($nombre, $destinatario, $precio, $estado, $anio, $id_usuario);
-           ControladorRegalo::mostrarRegalos($id_usuario);
-           //ControladorRegalo::mostrarRegalosAjax();
+            ControladorRegalo::insertarRegalo($nombre, $destinatario, $precio, $estado, $anio, $id_usuario);
+            ControladorRegalo::mostrarRegalos($id_usuario);
+            //ControladorRegalo::mostrarRegalosAjax();
         }
 
 
@@ -96,26 +96,26 @@ if ($_REQUEST) {
             //ControladorRegalo::mostrarRegalosAjax();
         }
 
-        if ($_REQUEST['accion'] == "busquedaYEAR"){
+        if ($_REQUEST['accion'] == "busquedaYEAR") {
             $year = $_REQUEST['year'];
             $id_usuario = unserialize($_SESSION['usuario'])->getId();
 
-            controladorRegalo::BusquedaYear($year, $id_usuario);
+            ControladorRegalo::BusquedaYear($year, $id_usuario);
         }
 
         if ($_REQUEST['accion'] == "verEnlaces") {
-            $id_regalo= $_REQUEST['id'];
+            $id_regalo = $_REQUEST['idregalo'];
             ControladorEnlace::mostrarEnlaces($id_regalo);
         }
 
         if ($_REQUEST['accion'] == "borrarenlace") {
-            $id = $_REQUEST['id'];
-            ControladorEnlace::borrarEnlace($id);
-            ControladorEnlace::mostrarEnlaces($_REQUEST["regalo"]);
-            //ControladorEnlace::borrarEnlace($id, $id_regalo);
-            //ControladorRegalo::mostrarRegalosAjax();
+            $id_enlace = $_REQUEST['idenlace'];
+            ControladorEnlace::borrarEnlace($id_enlace);
+            $id = $_REQUEST['regalo'];
+            ControladorEnlace::mostrarEnlaces($id);
+          
         }
-       
+
         if ($_REQUEST['accion'] == "crearEnlace") {
             $nombre = $_REQUEST['nombre'];
             $url = $_REQUEST['url'];
@@ -125,11 +125,24 @@ if ($_REQUEST) {
             $id_regalo = $_REQUEST['id_regalo'];
             ControladorEnlace::insertarEnlace($nombre, $url, $precio, $imagen, $prioridad, $id_regalo);
             ControladorEnlace::mostrarEnlaces($id_regalo);
+        }
+
+        if ($_REQUEST['accion'] == 'ordenar') {
+            $id_regalo = $_REQUEST['idregalo'];
+            ControladorEnlace::enlacesOrdenados($id_regalo);
+            //$_SESSION['id_regalo']= null;
+        }
+
+
+        if ($_REQUEST['accion'] == 'pdf') {
+            $id_usuario = unserialize($_SESSION['usuario'])->getId();
+            ControladorRegalo::generarPDF($id_usuario);
+        }
+
+        if ($_REQUEST['accion'] == 'cerrar') {
+            session_destroy();
+            echo '<script>window.location="' . "enrutador.php?accion=inicio" . '"</script>';
 
         }
-       
-       
-
-
     }
 }

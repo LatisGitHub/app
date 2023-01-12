@@ -2,77 +2,81 @@
 class RegaloBD
 {
 
-    public static function getRegalos($id_usuario)
+    public static function getRegalos($id)
     {
         $conexion = ConexionBD::conectar();
 
-        //Consulta BBDD
-        $stmt = $conexion->prepare("SELECT * FROM regalos WHERE id_usuario = ?");
+            $coleccion = $conexion->regalos;
 
-        $stmt->bindValue(1, $id_usuario);
+            $cursor = $coleccion->find(["id_usuario"=>$id]);
 
-        $stmt->execute();
+            //Crear los objetos para devolverlos (MVC), Mongo me devuelve array asociativo
+            $regalos = array();
+            foreach($cursor as $regalo) {
+               $regalo_OBJ = new Regalo($regalo['id'],$regalo['nombre'],$regalo['destinatario'],$regalo['precio'],$regalo['estado'],$regalo['anio'],$regalo['id_usuario']);
+               array_push($regalos, $regalo_OBJ);
+            }
 
-        $regalos = $stmt->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Regalo');
+            ConexionBD::cerrar();
 
-        ConexionBD::cerrar();
-
-        return $regalos;
+            return $regalos;
     }
 
 
-
+    //falta terminar
     public static function modificarRegalo($nombre, $destinatario, $precio, $estado, $anio, $id) {
         $conexion = ConexionBD::conectar();
+        $coleccion = $conexion->regalos;
+        $id_usuario = unserialize($_SESSION['usuario'])->getId();
 
-        $stmt = $conexion->prepare("UPDATE regalos
-        SET nombre = ?, destinatario = ?, precio = ?, estado = ?, anio = ?
-        WHERE id = ?");
-        
-        $stmt->bindValue(1, $nombre);
-        $stmt->bindValue(2, $destinatario);
-        $stmt->bindValue(3, $precio);
-        $stmt->bindValue(4, $estado);
-        $stmt->bindValue(5, $anio);
-        $stmt->bindValue(6, $id);
-
-        $stmt->execute();
+        $regalo = new Regalo($id, $nombre, $destinatario, $precio, $estado, $anio, $id_usuario);
+        $updateResult = $conexion->regalos->updateOne(
+          ["id" => (intVal($regalo->getId()))],
+          ['$set' => ["nombre" => $regalo->getNombre(), "destinatario" => $regalo->getDestinatario(), "precio" => $regalo->getPrecio(), 
+          "estado" => $regalo->getEstado(), "anio" => $regalo->getAnio()]]  
+        );
 
         ConexionBD::cerrar();
 
     }
 
+    //funciona PERO no pinta los nuevos regalos
     public static function insertarRegalo($nombre, $destinatario, $precio, $estado, $anio, $id_usuario)
     {
         $conexion = ConexionBD::conectar();
 
-        //Consulta BBDD
-        //UPDATE table_name
-        //SET column1 = value1, column2 = value2, ...
-        //WHERE condition;
-        $stmt = $conexion->prepare("INSERT INTO regalos (nombre, destinatario, precio, estado, anio, id_usuario)
-        VALUES (?, ?, ?, ?, ?, ?)");
-        $stmt->bindValue(1, $nombre);
-        $stmt->bindValue(2, $destinatario);
-        $stmt->bindValue(3, $precio);
-        $stmt->bindValue(4, $estado);
-        $stmt->bindValue(5, $anio);
-        $stmt->bindValue(6, $id_usuario);
+            //Hacer el autoincrement
+            //Ordeno por id, y me quedo con el mayor
+            $regaloMayor = $conexion->regalos->findOne(
+                [],
+                [
+                    'sort' => ['id' => -1],
+                ]);
+            if (isset($regaloMayor))
+                $idValue = $regaloMayor['id'];
+            else
+                $idValue = 0;
 
-        $stmt->execute();
+            $regalo = new Regalo($idValue, $nombre, $destinatario, $precio, $estado, $anio, $id_usuario);
+            //Collección 'usuarios'
+            $insertOneResult = $conexion->regalos->insertOne([
+                'id' => intVal($idValue + 1),
+                'nombre' => $regalo->getNombre(),
+                'destinatario' => $regalo->getDestinatario(),
+                'precio' => $regalo->getPrecio(),
+                'estado' => $regalo->getEstado(),
+                'anio' => $regalo->getAnio(),
+                'id_usuario' => $regalo->getId_usuario(),
+            ]);
 
-        ConexionBD::cerrar();
+            ConexionBD::cerrar();
     }
 
     public static function borrarRegalo($id) {
         $conexion = ConexionBD::conectar();
 
-        //Consulta BBDD
-        $stmt = $conexion->prepare("DELETE FROM regalos WHERE id  = ?");
+        $deleteResult = $conexion->regalos->deleteOne(['id' => intVal($id)]); 
 
-        $stmt->bindValue(1, $id);
-
-        $stmt->execute();       
         ConexionBD::cerrar();
 
     }
@@ -80,16 +84,19 @@ class RegaloBD
     public static function busquedaYear($year, $id_usuario) {
         $conexion = ConexionBD::conectar();
 
-        //Consulta BBDD
-        $stmt = $conexion->prepare("SELECT * from regalos WHERE anio = ? and id_usuario = ?");
-        $stmt->bindValue(1, $year);
-        $stmt->bindValue(2, $id_usuario);
+        $coleccion = $conexion->regalos;
 
+        $cursor = $coleccion->find(["id_usuario"=>$id_usuario]);
+        $cursor = $coleccion->find(["anio" => $year]);
 
-        $stmt->execute();
+        
 
-        //Usamos FETCH_CLASS para que convierta a objetos las filas de la BD
-        $regalos = $stmt->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Regalo');
+        //Crear los objetos para devolverlos (MVC), Mongo me devuelve array asociativo
+        $regalos = array();
+        foreach($cursor as $regalo) {
+           $regalo_OBJ = new Regalo($regalo['id'],$regalo['nombre'],$regalo['destinatario'],$regalo['precio'],$regalo['estado'],$regalo['anio'],$regalo['id_usuario']);
+           array_push($regalos, $regalo_OBJ);
+        }
 
         ConexionBD::cerrar();
 
