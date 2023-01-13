@@ -1,4 +1,8 @@
-<!DOCTYPE html>
+<?php
+class VistaSeries {
+
+public static function mostrarSeriesAPI($pagina) {
+echo '<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -8,17 +12,17 @@
     <title>APIs</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-</head>
+</head>';
 
-<body>
-    <div class='container'>
+echo '<body>
+    <div class="container">
         <row class="justify-content">
             <div class="container fluid col-2 md-3">
                 <img src="img/logo.jpg" alt="" class="img-fluid">
             </div>
-        </row>
+        </row>';
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-primary p-3" style="border-radius: 5px ;">
+        echo '<nav class="navbar navbar-expand-lg navbar-light bg-primary p-3" style="border-radius: 5px ;">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">HOME</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -74,19 +78,17 @@
 
 
 
-        </div>
-        <hr style="height:10px;color: blue ;">
-        <h1 class="text-center text-primary"> COLECCIÓN DE VIDEOJUEGOS </h1>
+        </div>';
+       echo '<hr style="height:10px;color: blue ;">
+        <h1 class="text-center text-primary"> COLECCIÓN DE VIDEOJUEGOS </h1>';
 
-        <div class='row'>
-
-            <?php
-
+       echo "<div class='row'>";
+         
             $key = "?key=950ab5372ce3467b8c4b888edb837781";
+            $page = "&page=" . $pagina . "&page_size=12";
 
             //$uri = "https://api.themoviedb.org/3/genre/tv/list?language=es&".$key;       
-            $uri = "https://api.rawg.io/api/games" . $key;
-
+            $uri = "https://api.rawg.io/api/games" . $key . $page;
             $resultado = file_get_contents($uri, false);
 
             //Pasar de json a objeto php y recorrer los resultados
@@ -98,17 +100,23 @@
                     $generos .= $rating->name . " ";
                 }*/
                 foreach ($respPHP->results as $juego) {
-                    echo "<div class='card m-3' style='width: 25rem;'>";
-                    echo "<img width='220' height='200' class='card-img-top' src='" . $juego->background_image . "'>";
+                    echo "<div class='card m-3 border-primary shadow-sm' style='width: 25rem;'>";
+                    echo "<img width='240' height='220' class='card-img-top mt-2 rounded' src='" . $juego->background_image . "'>";
                     echo '<div class="card-body">';
-                    echo '<h5 class="card-title text-primary">' . $juego->name . '</h5>';
-                    echo '<p class="card-text">' . $juego->rating_top . '</p>';
-                    echo '<p class="card-text">' . $juego->released . '</p>';
-                    echo '<a href="#" class="btn btn-primary">'. $juego -> rating. '</a>';
-                    echo '<a href="#" class="btn btn-primary ms-6">'. $juego -> rating_top. '</a>';
-                    foreach($juego->platforms as $platform){
-                        echo $platform->platform->name;
+                    echo '<center><h5 class="card-title text-primary text-uppercase">' . $juego->name . '</h5></center>';
+                    echo '<p class="card-text h6"> FECHA SALIDA: ' . $juego->released . '</p>';
+                    echo '<hr style="height:10px;color: blue ;">';
+                   
+                    echo '<p class="card-text h6"> PLATAFORMAS ↦ </p>';
+                    
+                    echo '<p class="card-text h6 text-primary"> ';
+                    foreach ($juego->platforms as $platform) {
+                        echo $platform->platform->name . " - ";
                     }
+                    echo "</p>";
+                    echo '<a href="#" style="text-decoration: none;color:black;" class="me-5 h6"> RATINGS: </a>';
+                    echo '<a href="#" style="margin-right:30px;" class="btn btn-warning ms-5">' . $juego->rating . '</a>';
+                    echo '<a href="#" class="btn btn-primary ms-3">' . $juego->rating_top . '</a>';
 
                     echo '</div>';
                     echo "</div>";
@@ -117,9 +125,9 @@
 
 
 
-            ?>
+            
 
-        </div>
+        echo '</div>
         <hr style="height:10px;color: blue ;">
 
         <h1 class="text-center text-primary"> RECOMENDACIONES</h1>
@@ -153,49 +161,81 @@
                             <div class="card-body">
                                 <h5 class="card-title">LEAGUE OF LEGENDS</h5>
                                 <p class="card-text">LOL es un juego de estrategia por equipos en el que dos equipos
-                                    de cinco tratan de destruir antes la base del otro.</p>
+                                    de cinco que tratan de destruir antes la base del otro.</p>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>';
+            echo "<div>";
+            echo "<center>";
+            echo "<a href='enrutador.php?accion=mostrarSeriesPagina&pagina=" . (1) . "'>|<</a>";
+            echo "&nbsp;";
 
-            <nav class="navbar navbar-light bg-primary text-center" style="border-radius: 5px ;">
-                    <div class="col-md-6" >
-                        <h2 class="text-light ">VideoGame Entertainer Lati</h2>
-                    </div>
-                    <div class="col-md-6 ">
-                        <div class="row p-2 justify-content-center">
-                            <div class="col-2">
-                                <img src="img/twitter.png" style="width: 80%;" class="img-fluid rounded">
-                            </div>
-                            <div class="col-2">
-                                <img src="img/facebook.png" style="width: 80%;" class="img-fluid rounded">
-                            </div>
-                            <div class="col-2">
-                                <img src="img/youtube.png" style="width: 80%;" class="img-fluid rounded">
-                            </div>
+            if ($pagina > 1) {
+                echo "<a href='enrutador.php?accion=mostrarSeriesPagina&pagina=" . ($pagina - 1) . "'><</a>";
+            } else {
+                echo "<a class='btn disabled m-2' href='enrutador.php?accion=mostrarSeriesPagina&pagina=" . ($pagina - 1) . "'><</a>";
+            }
+
+            echo "&nbsp;";
+
+            if ($pagina < 500) {
+                echo "<a href='enrutador.php?accion=mostrarSeriesPagina&pagina=" . ($pagina + 1) . "'>></a>";
+            } else {
+                echo "<a class='btn disabled m-2' href='enrutador.php?accion=mostrarSeriesPagina&pagina=" . ($pagina + 1) . "'>></a>";
+            }
+
+            echo "&nbsp;";
+
+            echo "<a href='enrutador.php?accion=mostrarSeriesPagina&pagina=" . (500) . "'>>|</a>";
+
+            echo "<div class='row mt-5'></div>";
+            echo "</center>";
+
+            echo "</div>";
+
+
+           
+
+            echo '<nav class="navbar navbar-light bg-primary text-center" style="border-radius: 5px ;">
+                <div class="col-md-6">
+                    <h2 class="text-light ">VideoGame Entertainer Lati</h2>
+                </div>
+                <div class="col-md-6 ">
+                    <div class="row p-2 justify-content-center">
+                        <div class="col-2">
+                            <img src="img/twitter2.png" style="width: 70%;" class="img-fluid rounded">
                         </div>
-
+                        <div class="col-2">
+                            <img src="img/facebook2.png" style="width: 60%;" class="img-fluid rounded">
+                        </div>
+                        <div class="col-2">
+                            <img src="img/youtube2.png" style="width: 80%;" class="img-fluid rounded">
+                        </div>
                     </div>
-                </nav>
+
+                </div>
+            </nav>';
 
 
-        </div>
+        echo '</div>';
 
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+        echo '<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
-        <script>
-            $(function() {
+        <script>';
+          /*  $(function() {
                 //Habilita los tooltips
                 $('[data-toggle="tooltip"]').tooltip({
                     container: 'body'
                 });
-            });
-        </script>
+            });*/
+        echo '</script>
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-</body>
+</body>';
+}
+}
