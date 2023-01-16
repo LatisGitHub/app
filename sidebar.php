@@ -128,7 +128,7 @@
 						<li><a href="/tema8/regalos/index.php" class="link-dark rounded">Ejercicio Mongo</a></li>
 					</ul>
 					<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-						<li><a href="/tema8/consumir-apis/videojuegos.php" class="link-dark rounded">Consumir api</a></li>
+						<li><a href="/tema8/consumir-apis/index.php" class="link-dark rounded">Consumir api</a></li>
 					</ul>
 					</div>
 				</li>
