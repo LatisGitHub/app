@@ -131,7 +131,9 @@
 						<li><a href="/tema8/consumir-apis/index.php" class="link-dark rounded">Consumir api</a></li>
 					</ul>
 					<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-						<li><a href="/tema8/chatgpt/index.php" class="link-dark rounded">chatgpt</a></li>
+						<li><a href="/tema8/chatgpt/admin/index.php" class="link-dark rounded">chatgpt - ADMIN</a></li>
+						<li><a href="/tema8/chatgpt/blog/index.php" class="link-dark rounded">chatgpt - BLOG</a></li>
+
 					</ul>
 					</div>
 				</li>

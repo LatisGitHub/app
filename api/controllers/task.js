@@ -42,7 +42,55 @@ async function getTasks(req, res) {
     }
 }
 
+async function getTask(req, res) {
+    const idTask = req.params.id;
+    try {
+        const task = await Task.findById(idTask);
+        if (!task) {
+            res.status(400).send("error al obtener las tareas.");
+        } else {
+            res.status(200).send(task);
+        }
+    } catch (error) {
+        res.status(500).send(error);
+    }
+}
+
+async function deleteTask(req, res) {
+    const idTask = req.params.id;
+    try {
+        const task = await Task.deleteOne({_id: idTask});
+        //const task = await Task.findByIdAndDelete(idTask);
+        if (!task) {
+            res.status(400).send("error al obtener las tareas.");
+        } else {
+            res.status(200).send("tarea borrada");
+        }
+    } catch (error) {
+        res.status(500).send(error);
+    }
+}
+
+async function updateTask(req, res) {
+    const idTask = req.params.id;
+    const cuerpo = req.body;
+    try {
+        const task = await Task.findByIdAndUpdate(idTask, cuerpo);
+        //const task = await Task.findByIdAndDelete(idTask);
+        if (!task) {
+            res.status(400).send("no se ha podido modificar.");
+        } else {
+            res.status(200).send("tarea modificada");
+        }
+    } catch (error) {
+        res.status(500).send(error);
+    }
+   
+}
 module.exports = {
     createTask,
-    getTasks
+    getTasks,
+    getTask,
+    deleteTask,
+    updateTask
 }
