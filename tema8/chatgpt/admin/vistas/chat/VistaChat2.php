@@ -79,7 +79,7 @@ class VistaChat2
        //echo $respuestaJSON->data[0]->url;
        //echo '<img src="'.$respuestaJSON->data[0]->url .'" alt="Girl in a jacket" width="500" height="600">';
        $imagen=$respuestaJSON->data[0]->url;
-       $_SESSION['imagen'] = $imagen;
+       
         echo '<center><div class="card mb-3 border-primary" style="max-width: 800px;">
         <div class="row g-0">
         <div class="col-md-4 mt-5 rounded">
@@ -97,7 +97,7 @@ class VistaChat2
         <a href="enrutador.php?accion=generarArticulo&articulo='.$texto.'" class="btn btn-warning">GENERAR OTRO</a>
         
         
-        <a href="enrutador.php?accion=guardarArticulo&titulo='.$texto.'&texto='.$elarticulo.'&imagen='.$imagen.'" class="btn btn-success">GUARDAR</a>
+        <a href="enrutador.php?accion=guardarArticulo&titulo='.$texto.'&texto='.$elarticulo.'&imagen='.urlencode($imagen).'" class="btn btn-success">GUARDAR</a>
         ';
        
         

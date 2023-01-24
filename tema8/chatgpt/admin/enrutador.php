@@ -74,7 +74,7 @@
                 $krr    = explode('-', $fecha);
                 $result = implode("/", $krr);
                              
-                $articuloObjecto = new Articulo($id="",$titulo, $texto, $_SESSION['imagen'], $result);
+                $articuloObjecto = new Articulo($id="",$titulo, $texto, $imagen, $result);
                
                 ControladorArticulo::guardarArticulo($articuloObjecto);
             }
